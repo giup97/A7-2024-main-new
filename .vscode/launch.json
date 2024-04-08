@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "DbSetupApplication",
+            "request": "launch",
+            "mainClass": "com.example.db_setup.DbSetupApplication",
+            "projectName": "DB_Setup"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "RemoteCCC.App.App",
+            "projectName": "RemoteCCC"
+        },
+        {
+            "type": "java",
+            "name": "MainController",
+            "request": "launch",
+            "mainClass": "com.example.T6.MainController",
+            "projectName": "T6"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Task9-G19"
+        },
+        {
+            "type": "java",
+            "name": "ApiGatewayApplication",
+            "request": "launch",
+            "mainClass": "com.example.api_gateway.ApiGatewayApplication",
+            "projectName": "api_gateway"
+        },
+        {
+            "type": "java",
+            "name": "ManvsclassApplication",
+            "request": "launch",
+            "mainClass": "com.groom.manvsclass.ManvsclassApplication",
+            "projectName": "manvsclass"
+        },
+        {
+            "type": "java",
+            "name": "SocialApplication",
+            "request": "launch",
+            "mainClass": "com.T8.social.SocialApplication",
+            "projectName": "social"
+        },
+        {
+            "type": "java",
+            "name": "T5Application",
+            "request": "launch",
+            "mainClass": "com.g2.t5.T5Application",
+            "projectName": "t5"
+        },
+        {
+            "type": "java",
+            "name": "Main(1)",
+            "request": "launch",
+            "mainClass": "com.example.Main",
+            "projectName": "testing"
+        }
+    ]
+}
