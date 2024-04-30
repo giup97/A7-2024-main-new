@@ -1,3 +1,7 @@
+// Questa classe è responsabile di gestire le richieste relative all'autenticazione e al login degli utenti.
+// Contiene metodi per mostrare il modulo di login, ottenere le informazioni di accesso, effettuare il login con Google,
+// verificare lo stato di autenticazione dell'utente e gestire il logout.
+
 package com.T8.social;
 
 import java.util.Collection;
@@ -13,12 +17,13 @@ public class OAuthUserGoogle implements OAuth2User {
     public OAuthUserGoogle(OAuth2User oauth2User) {
         this.oauth2User = oauth2User;
     }
- 
+    // Questo metodo restituisce gli attributi dell'utente autenticato
+    // ovvero i dettagli dell'utente recuperati dal provider OAuth2
     @Override
     public Map<String, Object> getAttributes() {
         return oauth2User.getAttributes();
     }
- 
+    // Questo metodo restituisce le autorizzazioni dell'utente autenticato
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return oauth2User.getAuthorities();
@@ -32,4 +37,6 @@ public class OAuthUserGoogle implements OAuth2User {
     public String getEmail() {
         return oauth2User.<String>getAttribute("email");     
     }
+    // Le authorities e gli attributi sono informazioni aggiuntive che possono essere 
+    // recuperate dall'utente autenticato
 }

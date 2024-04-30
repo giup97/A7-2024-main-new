@@ -1,3 +1,7 @@
+// Le Configurazioni di sicurezza sono definite in SecurityConfig.java:
+// vengono definite le regole di sicurezza per l'applicazione, 
+// ad esempio quali URL richiedono l'autenticazione e quali no.
+
 package com.T8.social;
 
 import java.io.IOException;
@@ -30,6 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private GoogleSuccessHandler googleAuthenticationSuccessHandler;
 
+    // Questo metodo configura le regole di sicurezza per l'applicazione
+    // in particolare definisce quali URL richiedono l'autenticazione e quali no
+    // gli URL del login e logout, settano il success handler per l'autenticazione con Google
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -37,11 +45,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/llogin", "/t23/**", "/login", "**").permitAll()
             .anyRequest().authenticated()
             .and()
-            .formLogin()
-                .loginPage("/login")
-            .and()
-            .oauth2Login().userInfoEndpoint()
+            .oauth2Login().loginPage("/login").userInfoEndpoint()
             .userService(oAuthUserGoogleService).and()
-            .successHandler(googleAuthenticationSuccessHandler);
+            .successHandler(googleAuthenticationSuccessHandler)
+            .and()
+            .logout()
+            .logoutUrl("/logout") // Logout URL
+            .clearAuthentication(true)
+            .logoutSuccessUrl("/test")
+            .permitAll();
             }
 }

@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.groom.manvsclass.model.filesystem.upload.FileUploadResponse;
 import com.groom.manvsclass.model.filesystem.upload.FileUploadUtil;
 import com.groom.manvsclass.model.filesystem.RobotUtil;
@@ -496,8 +495,5 @@ public Admin getAdminByUsername(@PathVariable String username) {
 	@GetMapping("class")
 	public String showclass() {
 		return "class";
-	}
-
-
-	
+	}	
 }

@@ -168,15 +168,16 @@ public class Controller {
     }
         
     // Autenticazione
-    @PostMapping("/login2")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestParam("email") String email,
                                         @RequestParam("password") String password, @CookieValue(name = "jwt", required = false) String jwt, HttpServletRequest request, HttpServletResponse response) {
 
         if(isJwtValid(jwt)) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Already logged in");
         }
-
+        System.out.println(email);
         User user = userRepository.findByEmail(email);
+        System.out.println(user.email);
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email not found");
@@ -194,15 +195,14 @@ public class Controller {
         Cookie jwtTokenCookie = new Cookie("jwt", token);
         jwtTokenCookie.setMaxAge(3600);
         response.addCookie(jwtTokenCookie);
-
+        System.err.println("redirect:/main");
         try {
             response.sendRedirect("/main");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        return ResponseEntity.status(302).body("");
+        return ResponseEntity.status(302).body("Login avvenuto correttamente");
     }
 
     public static String generateToken(User user) {
@@ -228,7 +228,7 @@ public class Controller {
         jwtTokenCookie.setMaxAge(0);
         response.addCookie(jwtTokenCookie);
 
-        return new ModelAndView("redirect:/login"); 
+        return new ModelAndView("redirect:/oauthLogout"); 
     }
 
     @GetMapping("/testdbsetup")
@@ -352,7 +352,7 @@ public class Controller {
         } catch(Exception e) {
             System.err.println(e);
         }
-
+        System.out.println("jwt non valido");
         return false;
     }
 
@@ -370,10 +370,10 @@ public class Controller {
         return new ModelAndView("register");
     }
 
-    @GetMapping("/login2")
+    @GetMapping("/login")
     public ModelAndView showLoginForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
         if(isJwtValid(jwt)) return new ModelAndView("redirect:/main"); 
-
+        System.out.println("Something");
         return new ModelAndView("login");
     }
 
